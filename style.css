@@ -1,0 +1,19 @@
+h1 {
+    font-family: 'Helvetica';
+    color: white;
+    background-color: #333; /*dark gray*/
+}
+
+p {
+    font-size:18px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+/* CSS */
+.highlighted { 
+    background-color: yellow;
+}
