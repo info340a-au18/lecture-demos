@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/* Container */
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 300px;
+    background-color: rebeccapurple;
+}
+
+/* Items */
+.boxes div {
+    background-color: orange;
+    margin: 5px;
+    flex-basis: 20px;
+}
+
+.boxes .a {
+    flex-grow: 3;
+}
+
+
+
+
+li {
+    display: inline-block;
+    width: 200px;
+    padding: 50;
+    border: 1px solid black ;
+    border-bottom-width:5px;
+}
+
+
+
