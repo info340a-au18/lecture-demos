@@ -19,9 +19,43 @@ li {
 /* Flexbox items */
 .boxes div {
     background-color: orange;
-    margin: .5em 0;
-    padding: 0 .5em;
+    border: 5px solid rebeccapurple;
+    margin: 0;
+    padding: .25em;
     flex-basis: 50%;
 }
+
+/* Media Queries */
+
+/* width > 768px */
+@media (min-width: 768px) {
+    /* a normal css rule */
+    body {
+        background-color: lightblue;
+    }
+
+    .boxes div {
+        flex-basis: 33%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    body {
+        background-color: darkblue;
+    }
+
+    .boxes div {
+        flex-basis: 25%;
+        flex-grow: 1;
+    }
+
+    h1 {
+        color: white;
+    }
+}
+
+
+
 
 
