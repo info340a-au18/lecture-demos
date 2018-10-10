@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+li {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid black ;
+    border-bottom-width:5px;
+}
+
+/* Flexbox container */
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rebeccapurple;
+}
+
+/* Flexbox items */
+.boxes div {
+    background-color: orange;
+    margin: .5em 0;
+    padding: 0 .5em;
+    flex-basis: 50%;
+}
+
+
