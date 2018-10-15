@@ -4,50 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
   
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   <title>Bootstrap Demo</title>
 </head>
 
-<body>
+<body class="container">
   <header>
-    <h1>Bootstrap Demo</h1>
-    <p>Building on the shoulders of giants</p>
+    <h1 class="text-success bg-dark p-sm-2 p-md-5">Bootstrap Demo</h1>
+    <p class="lead text-danger d-md-block d-none">Building on the shoulders of giants</p>
     <a href="http://getbootstrap.com/">Get Bootstrap</a>
   </header>
 
   <main>
     <section>
       <div>
-        <p><a href="#contentBlock">Some content...</a></p>
-        <div id="contentBlock">
+        <p><a href="#contentBlock" data-toggle="collapse">Some content...</a></p>
+        <div id="contentBlock"  class="collapse">
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam fuga architecto nulla obcaecati quae rem aspernatur, quasi ipsam eius nam id, voluptatem eligendi debitis sapiente exercitationem vitae magni quaerat ex?</p>
         </div>
       </div>
       <div>
-        <p><a href="#moreContent">More content..</a></p>
-        <div id="moreContent">
+        <p><a href="#moreContent" data-toggle="collapse">More content..</a></p>
+        <div id="moreContent"  class="collapse">
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam fuga architecto nulla obcaecati quae rem aspernatur, quasi ipsam eius nam id, voluptatem eligendi debitis sapiente exercitationem vitae magni quaerat ex?</p>
         </div>
       </div>
     </section>
     
-    <section>
-      <div>
+    <section class="row">
+      <div class="col-12 col-md-4 col-lg-3">
         <h2>Thing A</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam, est!</p>
       </div>
-      <div>
+      <div class="col-6  col-md-12  col-lg-3">
         <h2>Thing B</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum repudiandae tempore nobis?</p>
       </div>
-      <div>
+      <div class="col-6 col-md-4  col-lg-12">
         <h2>Thing C</h2>
         <p>Lorem ipsum dolor sit amet consectetur.</p>
       </div>
-      <div>
+      <div class="col-6 col-md-4  col-lg-3">
         <h2>Thing D</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
-      <div>
+      <div class="col-6 col-md-4">
         <h2>Thing E</h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim, illum?</p>
       </div>
