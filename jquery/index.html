@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery Demo</title>
+
+  <!-- Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+
+	<header>
+		<h1>Playground for JavaScript</h1>
+	</header>
+
+	<nav>
+		<p>
+			<button id="collapseAll" class="btn btn-sm btn-primary">Collapse all sections</button>
+			<button id="expandAll" class="btn btn-sm btn-primary">Expand all sections</button>
+		</p>
+	</nav>
+
+	<main>
+		<section class="card">
+			<div class="card-header">
+				<a href="#playground">Let's play!</a>
+			</div>
+
+			<div id="#playground">
+				<div class="card-body">
+					<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+						<path d="M508.8 109.4c-9.2.5-19.4-10-22.4 12.3-8-.7-6-17.5-25.8 0-5.5-5.5-.7-18.2-22.4-12.3 3.8-8.8 6-17.3-13-21.4 12.3-7.3 9-15.8 0-24.7 14.4-5 20-11.8 13-21.4 11.3 5.5 16 1 22.4-12.4 7.3 4 13.8 11 25.8 0 3.3 7 3.5 16 22.4 12.3-5.8 7.7-5.7 15 13 21.3-3.3 7-17.8 10.4 0 24.7-23.3 5.6-10.4 10.7-13 21.4z"
+						 fill="#ff9a25" />
+						<ellipse cx="473.2" cy="75.1" rx="36.4" ry="35" fill="#ffd42a" />
+						<path d="M403.8 393.6h63v-32h-62.4c-1.4-.3-10.4-2.3-21.4-16.8l-160.7-207h-43.8v32h28.2l151 194.4c21 27.8 42 29.3 46 29.3"
+						/>
+						<path d="M403.7 371.3H467c5.2 0 9.5-4.4 9.5-9.7 0-5.3-4.3-9.6-9.6-9.6h-61.5c-1.3-.5-7.4-3.2-15-13L239 144c-3.5-6.3-13.5-15.7-31.6-15.7h-29c-5.4 0-9.7 4.4-9.7 9.6 0 5.2 4.2 9.5 9.5 9.5h29c11.4 0 14.7 5.5 15 6l1 1.7 152 195.3c13.5 17.6 25.3 20.2 27.5 20.5h.7"
+						/>
+						<path d="M176 109.3h11.7v-38H176zm39.4-19c0-9.7-7.2-17.6-16.5-19v38c9-1.3 16.3-9.2 16.3-18.8zm-92-32h72.8c17.6 0 32 14.3 32 32 0 17.6-14.4 32-32 32h-28L68 400H54l5-12.7 100.3-278h5.5v-38h-32.6L18 387.3l-5.6 13H0l123.4-342"
+						/>
+						<path id="cloud" class="cloud" d="M476.7 16A37.8 38.2 0 0 0 447 31a44.2 37 0 0 0-13.7-2A44.2 37 0 0 0 389 66a44.2 37 0 0 0 42 36.8 44.8 26.5 0 0 0 44.3 22 44.8 26.5 0 0 0 44-21.4A62.7 29.8 0 0 0 552.8 77a62.7 29.8 0 0 0-39-27.6A37.8 38.2 0 0 0 476.8 16z"
+						 fill="#8d8d8d" stroke="#000" stroke-width="1.2" />
+						<circle cx="30" cy="370" r="30" fill="red" />
+					</svg>
+				</div>
+			</div>
+		</section>
+
+		<section class="card">
+			<div class="card-header">
+				<a href="#face">JavaScript makes me feel...</a>
+			</div>
+			<div id="#face" class="collapse show">
+				<div class="card-body">
+					<figure>
+						<img src="img/happy.png" alt="a lego face">
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<section class="card">
+			<div class="card-header">
+				<a href="text">Some text...</a>
+			</div>
+			<div id="text" class="collapse show">
+				<div class="card-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quo minima similique nesciunt voluptatum id exercitationem,
+						amet aliquam iure repellendus doloremque accusantium quia dolorem perferendis et placeat nostrum. Quis, ut.</p>
+					<p>Mollitia quae dolore rem aspernatur deleniti illo earum. Sed quidem placeat deserunt veritatis nostrum iusto dicta magni
+						maxime blanditiis accusantium dolorum aliquid, quisquam totam, mollitia quo eaque cum eos repellat?</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- load script files here! -->
+	<script src="js/index.js"></script>
+
+</body>
+</html>
