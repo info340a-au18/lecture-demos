@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AJAX Demo</title>
+
+  <!-- Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body class="container">
+
+	<h1>AJAX Demo</h1>
+
+	<form role="form" method="GET" action="https://api.github.com/search/repositories">
+		<input type="text" name="q" id="queryInput" class="form-control mb-2" placeholder="Search Github for...">
+		<input type="hidden" name="sort" value="stars">
+		<button type="submit" class="btn btn-primary">Search!</button>
+	</div>
+
+	<div id="content">
+		<!-- rendered content goes here -->
+	</div>
+
+	<!-- load scripts -->
+	
+	<script src="js/index.js"></script>
+</body>
+</html>
+</body>
+</html>
