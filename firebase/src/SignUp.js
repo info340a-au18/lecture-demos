@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import firebase from 'firebase/app';
+
 export default class SignUpForm extends Component {
+
   constructor(props){
     super(props)
     this.state = {
@@ -8,24 +11,69 @@ export default class SignUpForm extends Component {
       password: '',
       username: '',
     };
+
   }
+
+  componentDidMount() {
+    this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+      if(firebaseUser){ //signed in!
+        this.setState({user: firebaseUser})
+      } else { //signed out
+        this.setState({user: null})
+      }
+    })
+
+  }
+
+  componentWillUnmount() {
+    this.authUnSubFunction() //stop listening for auth changes
+  }
+
 
   //A callback function for registering new users
   handleSignUp = () => {
     this.setState({errorMessage:null}); //clear old error
+
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((userCredential) => {
+        let firebaseUser = userCredential.user;
+        console.log("User created!", firebaseUser);
+        //add the username to their account     
+        let updatePromise = firebaseUser.updateProfile({
+          displayName: this.state.username
+        })
+
+        return updatePromise;
+      })
+      .then(() => {
+        //after profile is updated
+        //update the state //come back to in a second
+      })
+      .catch((err) => {
+        this.setState({errorMessage: err.message})
+      })
 
   }
 
   //A callback function for logging in existing users
   handleSignIn = () => {
     this.setState({errorMessage:null}); //clear old error
+
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .catch((err) => {
+        this.setState({errorMessage: err.message})
+      })  
     
   }
 
   //A callback function for logging out the current user
   handleSignOut = () => {
     this.setState({errorMessage:null}); //clear old error
-    
+
+    firebase.auth().signOut()
+      .catch((err) => {
+        this.setState({errorMessage: err.message})
+      })  
   }
 
   handleChange = (event) => {
@@ -44,7 +92,7 @@ export default class SignUpForm extends Component {
 
         {/* Only included if first clause is true */}
         {this.state.errorMessage &&
-          <p class="alert alert-danger">{this.state.errorMessage}</p>
+          <p className="alert alert-danger">{this.state.errorMessage}</p>
         }
 
         {this.state.user && 
