@@ -14,22 +14,6 @@ export default class SignUpForm extends Component {
 
   }
 
-  componentDidMount() {
-    this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
-      if(firebaseUser){ //signed in!
-        this.setState({user: firebaseUser})
-      } else { //signed out
-        this.setState({user: null})
-      }
-    })
-
-  }
-
-  componentWillUnmount() {
-    this.authUnSubFunction() //stop listening for auth changes
-  }
-
-
   //A callback function for registering new users
   handleSignUp = () => {
     this.setState({errorMessage:null}); //clear old error
