@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'; //bootstrap (bundled)
+import './style.css';
 import App from './App';
 
 import firebase from 'firebase/app'
 import 'firebase/auth';
+import 'firebase/database';
 
 // Initialize Firebase
 var config = {

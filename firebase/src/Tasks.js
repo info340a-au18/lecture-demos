@@ -1,21 +1,53 @@
 import React, { Component } from 'react';
 
+import firebase from 'firebase/app'
+
+let jitc = {
+  "exampleTask": {
+    description: "",
+    completed: false
+  },
+  tasks: {
+    "-LSQRUI": {},
+    "-LSQlb": {},
+  }
+}
+
 export default class TaskApp extends Component {
   constructor(props){
     super(props); //pass up to parent
 
     //initialize state
     this.state = {
-      tasks: []
+      tasks: {}
     };
   }
 
   componentDidMount() {
     //asynchronously load data!
+    // this.messageRef = firebase.database().ref('message')
+    this.tasksRef = firebase.database().ref('tasks')
+    //this.exampleTaskRef = firebase.database().ref('exampleTask')
+    this.tasksRef.on('value', (snapShot) => {
+      let theData = snapShot.val()
+      this.setState({
+        tasks: theData
+      })
+    })
+
   }
 
   addTask = (newDescription) => {
     console.log("Adding new task: ", newDescription);
+      let newTask = {
+        description: newDescription,
+        complete: false
+      }
+
+    this.tasksRef.push(newTask)
+      .catch((err) => console.log(err.message))      
+
+
     //add additional task
     // this.setState((currentState) => {
     //   let newTask = {
@@ -29,6 +61,13 @@ export default class TaskApp extends Component {
   }
 
   toggleComplete = (taskId) => {
+    let localTask = this.state.tasks[taskId] //local object
+    let newStatus = !localTask.complete;
+
+    let taskRef = firebase.database().ref('tasks').child(taskId)
+    taskRef.update({complete: newStatus})
+
+
     //toggle task completion
     // this.setState((currentState) => { //update the state and RE-RENDER
     //   let updatedTasks = currentState.tasks.map((task) => {
@@ -41,14 +80,23 @@ export default class TaskApp extends Component {
   }
 
   render() {
-    let incomplete = this.state.tasks.filter((task) => !task.complete);
+    //change this.state.tasks from an {} to an []
+    let taskIds = Object.keys(this.state.tasks);
+    let taskArray = taskIds.map((id) => {
+      let taskObj = this.state.tasks[id]
+      taskObj.id = id
+      return taskObj
+    })
+    console.log(taskArray)
+
+    let incomplete = taskArray.filter((task) => !task.complete);
     //console.log("Number of tasks:", incomplete.length);
 
     return (
       <div className="container">
         <h2>Things <strong>WE</strong> have to do: ({incomplete.length})</h2>
         <TaskList 
-          tasks={this.state.tasks} 
+          tasks={taskArray} 
           howToToggle={this.toggleComplete} 
         />
         <AddTaskForm howToAdd={this.addTask} />
@@ -98,6 +146,7 @@ class Task extends Component {
   render() {
     let thisTask = this.props.task; //can give local name for readability
     let className = this.props.task.complete ? 'font-strike' : '';
+    console.log(className)
     return (
       <li className={className} onClick={this.handleClick}>
         {thisTask.description}

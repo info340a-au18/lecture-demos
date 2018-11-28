@@ -28,7 +28,7 @@ class App extends Component {
 
   render() {
     let content = <SignUpForm />
-    if(!this.state.user){
+    if(this.state.user){
       content = <TaskApp />
     } 
 
