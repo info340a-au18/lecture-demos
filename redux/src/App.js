@@ -1,51 +1,39 @@
 import React, { Component } from 'react';
 
+import * as Action from './actions'
+
 export default class App extends Component {
   constructor(props){
     super(props); //pass up to parent
 
     //initialize state
-    this.state = {
-      tasks: this.props.initialTasks
-    };
+    this.state = this.props.store.getState();
+  }
+
+  componentDidMount() {
+    this.props.store.subscribe(() => { //on update
+      this.setState(this.props.store.getState())
+    })
   }
 
   addTask = (newDescription) => {
-    //add additional task
-    this.setState((currentState) => {
-      let newTask = {
-        id: currentState.tasks.length+1,
-        description: newDescription,
-        complete: false
-      }
-      let updatedTasks = currentState.tasks.concat(newTask); //returns new array
-      return {tasks: updatedTasks}
-    })
+    let action = Action.addTask(newDescription);
+    this.props.store.dispatch(action);
   }
 
   toggleComplete = (taskId) => {
-    //toggle task completion
-    this.setState((currentState) => {
-      let modifiedTasks = currentState.tasks.map((task) => {
-        if(task.id === taskId){
-          //return a new copy, don't modify what we have!
-          let copy = {...task, complete: !task.complete}
-          return copy;
-        } else {
-          return task; //else return same task
-        }
-      })
-    return {tasks: modifiedTasks};
-    })
+    this.props.store.dispatch(Action.toggleTask(taskId));
   }
 
   render() {
+    console.log("store", this.props.store.getState());
+
     let incomplete = this.state.tasks.filter((task) => !task.complete);
     //console.log("Number of tasks:", incomplete.length);
 
     return (
       <div className="container">
-        <h2>Things <strong>WE</strong> have to do: ({incomplete.length})</h2>
+        <h2>Things I have to do: ({incomplete.length})</h2>
         <TaskList 
           tasks={this.state.tasks}
           howToToggle={this.toggleComplete} 
@@ -87,7 +75,6 @@ class Task extends Component {
   render() {
     let thisTask = this.props.task; //can give local name for readability
     let className = this.props.task.complete ? 'font-strike' : '';
-    console.log(className)
     return (
       <li className={className} onClick={this.handleClick}>
         {thisTask.description}
